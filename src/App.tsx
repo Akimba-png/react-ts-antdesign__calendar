@@ -1,7 +1,9 @@
+import  AppRouter from './components/app-router/app-router';
+
 function App(): JSX.Element {
   return (
-    <div>Test test</div>
-  );    
+    <AppRouter />
+  );
 }
 
 export default App;
