@@ -1,0 +1,58 @@
+.header-container {
+  padding: 0 100px;
+}
+
+.container {
+  padding: 0 150px;
+}
+
+.header-title {
+  padding-top: 8px;
+}
+
+.header-menu {
+  min-width: 300px;
+  display: flex;
+  justify-content: end;
+}
+
+.ant-typography.header-title {
+  margin: 0;
+  font-size: 32px;
+  color: #fff;
+}
+
+.text-color {
+  color: #fff;
+}
+
+.login-container {
+  min-height: calc(100vh - 145px);
+  padding-bottom: 140px;
+}
+
+.login-title {
+  margin: auto;
+  padding-top: 15px;
+}
+
+.form-login.ant-form {
+  padding: 30px;
+  width: 500px;
+  outline: 1px solid #000;
+}
+
+.form-login__button_wrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.form-login__button {
+  width: 150px;
+}
+
+.user-info {
+  margin-left: auto;
+  padding-right: 15px;
+  color: #fff; 
+}

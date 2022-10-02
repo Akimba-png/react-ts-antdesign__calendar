@@ -1,10 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/use-typed-selector';
 import { privateRoutes, pulblicRoutes } from '../../router/router';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthStatus } from '../../const';
+
 
 function AppRouter(): JSX.Element {
-  const isAuth = true;
-  return isAuth ? (
+  const isAuth = useAppSelector((state) => state.userReducer.isAuth);
+  return isAuth === AuthStatus.Auth? (
     <Routes>
       {privateRoutes.map((route, i) => {
         const keyIndex = route.path + i.toString();
