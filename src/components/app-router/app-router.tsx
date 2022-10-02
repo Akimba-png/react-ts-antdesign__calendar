@@ -1,11 +1,18 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import { privateRoutes, pulblicRoutes } from '../../router/router';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import { AppRoute, AuthStatus } from '../../const';
 
 
 function AppRouter(): JSX.Element {
   const isAuth = useAppSelector((state) => state.userReducer.isAuth);
+
+  if (isAuth === AuthStatus.Unknown) {
+    return (
+      <LoadingScreen />
+    );
+  }
   return isAuth === AuthStatus.Auth? (
     <Routes>
       {privateRoutes.map((route, i) => {

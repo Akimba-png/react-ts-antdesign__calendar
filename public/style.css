@@ -56,3 +56,19 @@
   padding-right: 15px;
   color: #fff; 
 }
+
+.loading-screen {
+  height: calc(100vh - 64px);
+  justify-content: center;
+}
+
+.loading-screen__title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loading-screen__text {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
