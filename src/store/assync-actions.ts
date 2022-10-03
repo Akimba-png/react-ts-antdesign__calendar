@@ -1,6 +1,6 @@
 import { ThunkCreatorResult } from './store';
-import { ILoginResponse, IUser, IEvent, IUserName } from '../types';
-import { setEvents } from './reducers/event-reducer/event-reducer';
+import { ILoginResponse, IUser, IEvent, IUserName, UserName } from '../types';
+import { setEvents, setGuests } from './reducers/event-reducer/event-reducer';
 import { setAuth, setUser } from './reducers/user-reducer/user-reducer';
 import { setToken } from '../services/token';
 import { ApiRoute, AuthStatus } from '../const';
@@ -10,6 +10,15 @@ const loadEvents = (username: string): ThunkCreatorResult => (dispatch, _state, 
   api
     .get<IEvent[]>(ApiRoute.Events + username)
     .then((response) => dispatch(setEvents(response.data)));
+};
+
+export const loadGuests = (onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+  api
+    .get<UserName[]>(ApiRoute.Guests)
+    .then((response) => {
+      dispatch(setGuests(response.data));
+      onSuccess();
+    });
 };
 
 export const login = (userData: IUser): ThunkCreatorResult => (dispatch, _state, api) => {

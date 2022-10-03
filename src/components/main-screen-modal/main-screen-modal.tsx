@@ -8,7 +8,7 @@ interface MainScreenModalProps {
 }
 
 
-function MainScreenModal({  
+function MainScreenModal({
   onModalClose,
 }: MainScreenModalProps): JSX.Element {
 

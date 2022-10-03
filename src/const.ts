@@ -10,6 +10,7 @@ export enum AppRoute {
 export enum ApiRoute {
   Login = '/login',
   Events = '/events/',
+  Guests = '/guests/',
 }
 
 export enum ValidateMessage {
