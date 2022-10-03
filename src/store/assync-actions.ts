@@ -12,6 +12,15 @@ const loadEvents = (username: string): ThunkCreatorResult => (dispatch, _state, 
     .then((response) => dispatch(setEvents(response.data)));
 };
 
+export const postEvent = (event: IEvent, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+  api
+    .post<IEvent[]>(ApiRoute.Events, event)
+    .then((response) => {
+      dispatch(setEvents(response.data));
+      onSuccess();
+    });
+};
+
 export const loadGuests = (onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .get<UserName[]>(ApiRoute.Guests)

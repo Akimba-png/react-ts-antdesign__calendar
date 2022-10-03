@@ -7,7 +7,7 @@ export interface IDatabase {
   users: IUserWithToken[];
   getUsers(): UserName[],
   getEvents(requst: AxiosRequestConfig): IEvent[],
-  setEvent(event: IEvent): IEvent[],
+  setEvent(request: AxiosRequestConfig): IEvent[],
 }
 
 
@@ -28,7 +28,8 @@ export class Database implements IDatabase {
     return this.filterEvents(events, user);
   }
 
-  setEvent(event: IEvent): IEvent[] {
+  setEvent(request: AxiosRequestConfig): IEvent[] {
+    const event: IEvent = JSON.parse(request.data);
     const user = event.author;
     const currentEvents: IEvent[] = this.parseEvents();
     currentEvents.push(event);

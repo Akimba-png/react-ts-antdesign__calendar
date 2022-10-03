@@ -53,5 +53,16 @@ export const mockApi = (api: AxiosInstance, delay: number, server: IAuthenticato
       }
       return [StatusCode.UnAuth];
     });
+
+    apiAdapter.onPost(ApiRoute.Events).reply((config) => {
+      const isTokenValid = server.validateToken(config);
+      if (isTokenValid) {
+        return [
+          StatusCode.Success,
+          server.dataBase.setEvent(config),
+        ];
+      }
+      return [StatusCode.UnAuth];
+    });
 };
 
