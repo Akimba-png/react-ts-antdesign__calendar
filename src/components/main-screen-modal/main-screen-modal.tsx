@@ -1,5 +1,6 @@
-import { Button, DatePicker, DatePickerProps, Form, Modal, Input } from 'antd';
+import { Button, DatePicker, DatePickerProps, Form, Modal, Input, Select } from 'antd';
 import Item from 'antd/lib/form/FormItem';
+import { useAppSelector } from '../../hooks/use-typed-selector';
 import { validate } from '../../utils/common';
 
 
@@ -7,10 +8,15 @@ interface MainScreenModalProps {
   onModalClose: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const { Option } = Select;
+
 
 function MainScreenModal({
   onModalClose,
 }: MainScreenModalProps): JSX.Element {
+
+  const guests = useAppSelector(store => store.eventReducer.guests);
+  const author = useAppSelector(store => store.userReducer.userName);
 
   const handleOk = () => {
     setTimeout(() => {
@@ -20,6 +26,9 @@ function MainScreenModal({
   
   const handleCancel = () => {
     onModalClose(false);
+  };
+
+  const handleSelectChange = (value: string) => {
   };
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
@@ -47,7 +56,19 @@ function MainScreenModal({
           name="user"
           rules={[validate.required('Choose user')]}
         >
-          <Input />
+          <Select
+            className="modal-select"
+            onChange={handleSelectChange}
+          >
+            {
+              guests.map((guest, i) => {
+                const keyIndex = guest + i.toString();
+                return (
+                  <Option value={guest} key={keyIndex}>{guest}</Option>
+                );
+              })
+            }
+          </Select>
         </Item>
 
         <Item
