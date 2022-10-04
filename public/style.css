@@ -26,14 +26,14 @@
   color: #fff;
 }
 
-.login-container {
-  min-height: calc(100vh - 145px);
-  padding-bottom: 140px;
+.ant-layout.login-container {
+  padding-top: 110px;
+  min-height: calc(100vh - 64px);
 }
 
-.login-title {
-  margin: auto;
-  padding-top: 15px;
+.ant-typography.login-title {
+  margin: 0 auto;
+  margin-bottom: 80px;
 }
 
 .form-login.ant-form {

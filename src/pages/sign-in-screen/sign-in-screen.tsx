@@ -7,12 +7,10 @@ import LoginForm from '../../components/login-form/login-form';
 function SignInScreen(): JSX.Element {
 
   return (
-    <Layout className="container" >
+    <Layout className="login-container" >
         <Title className='login-title'>Login Page</Title>
       <Row
-        className="login-container"
         justify="center"
-        align="middle"
       >
       <LoginForm />
       </Row>
