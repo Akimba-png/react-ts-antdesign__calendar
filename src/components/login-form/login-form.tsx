@@ -12,12 +12,17 @@ import { ValidateMessage } from '../../const';
 function LoginForm(): JSX.Element {
   const [user, setUser] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch() as AppDispatch;
 
   const onFinish = () => {
+    setIsLoading(true);
     const userData: IUser = { username: user, password };
-    dispatch(login(userData));
+    dispatch(
+      login(userData,
+      () => setIsLoading(false)
+    ));
   };
 
   return (
@@ -49,7 +54,12 @@ function LoginForm(): JSX.Element {
       </Item>
 
       <Item className="form-login__button_wrapper">
-        <Button type="primary" htmlType="submit" className="form-login__button">
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="form-login__button"
+          loading={isLoading}
+        >
           Submit
         </Button>
       </Item>

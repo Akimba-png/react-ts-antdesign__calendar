@@ -6,11 +6,16 @@ import { setToken } from '../services/token';
 import { ApiRoute, AuthStatus } from '../const';
 
 
-const loadEvents = (username: string): ThunkCreatorResult => (dispatch, _state, api) => {
+const loadEvents = (username: string, onSuccess?: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .get<IEvent[]>(ApiRoute.Events + username)
     .then((response) => dispatch(setEvents(response.data)))
-    .then(() => dispatch(setAuth(AuthStatus.Auth)));
+    .then(() => {
+      dispatch(setAuth(AuthStatus.Auth));
+      if (onSuccess) {
+        onSuccess();
+      }
+    });
 };
 
 export const postEvent = (event: IEvent, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
@@ -31,7 +36,7 @@ export const loadGuests = (onSuccess: () => void): ThunkCreatorResult => (dispat
     });
 };
 
-export const login = (userData: IUser): ThunkCreatorResult => (dispatch, _state, api) => {
+export const login = (userData: IUser, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .post<ILoginResponse>(ApiRoute.Login, userData)
     .then((response) => {
@@ -39,7 +44,7 @@ export const login = (userData: IUser): ThunkCreatorResult => (dispatch, _state,
       dispatch(setUser(response.data.username));
       return response.data.username;
     })
-    .then((userName) => dispatch(loadEvents(userName)));
+    .then((userName) => dispatch(loadEvents(userName, onSuccess)));
 };
 
 export const checkAuth = (): ThunkCreatorResult => (dispatch, _state, api) => {
