@@ -1,42 +1,59 @@
+import { AxiosError } from 'axios';
 import { ThunkCreatorResult } from './store';
 import { ILoginResponse, IUser, IEvent, IUserName, UserName } from '../types';
 import { setEvents, setGuests } from './reducers/event-reducer/event-reducer';
 import { setAuth, setUser } from './reducers/user-reducer/user-reducer';
 import { setToken } from '../services/token';
-import { ApiRoute, AuthStatus } from '../const';
+import { showErrorConnectionToast, showUnregisteredToast } from '../components/toast/toast';
+import { noop } from '../utils/common';
+import { ApiRoute, AuthStatus, StatusCode } from '../const';
 
 
-const loadEvents = (username: string, onSuccess?: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+const loadEvents = (username: string, onFinish?: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .get<IEvent[]>(ApiRoute.Events + username)
     .then((response) => dispatch(setEvents(response.data)))
     .then(() => {
       dispatch(setAuth(AuthStatus.Auth));
-      if (onSuccess) {
-        onSuccess();
+      if (onFinish) {
+        onFinish();
       }
+    })
+    .catch(() => {
+      if (onFinish) {
+        onFinish();
+      }
+      showErrorConnectionToast();
     });
 };
 
-export const postEvent = (event: IEvent, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+export const postEvent = (event: IEvent, onFinish: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .post<IEvent[]>(ApiRoute.Events, event)
     .then((response) => {
       dispatch(setEvents(response.data));
-      onSuccess();
+      onFinish();
+    })
+    .catch(() => {
+      onFinish();
+      showErrorConnectionToast();
     });
 };
 
-export const loadGuests = (onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+export const loadGuests = (onFinish: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .get<UserName[]>(ApiRoute.Guests)
     .then((response) => {
       dispatch(setGuests(response.data));
-      onSuccess();
+      onFinish();
+    })
+    .catch(() => {
+      onFinish();
+      showErrorConnectionToast();
     });
 };
 
-export const login = (userData: IUser, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
+export const login = (userData: IUser, onFinish: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .post<ILoginResponse>(ApiRoute.Login, userData)
     .then((response) => {
@@ -44,7 +61,16 @@ export const login = (userData: IUser, onSuccess: () => void): ThunkCreatorResul
       dispatch(setUser(response.data.username));
       return response.data.username;
     })
-    .then((userName) => dispatch(loadEvents(userName, onSuccess)));
+    .then((userName) => dispatch(loadEvents(userName, onFinish)))
+    .catch((error: AxiosError) => {
+      if (error.response?.status === StatusCode.UnRegistered) {
+        showUnregisteredToast();
+        onFinish();
+        return;
+      }
+      showErrorConnectionToast();
+      onFinish();
+    });
 };
 
 export const checkAuth = (): ThunkCreatorResult => (dispatch, _state, api) => {
@@ -55,7 +81,13 @@ export const checkAuth = (): ThunkCreatorResult => (dispatch, _state, api) => {
       return response.data.username;
     })
     .then((data) => dispatch(loadEvents(data)))
-    .catch(() => {});
+    .catch((error: AxiosError) => {
+      if (error.response?.status !== StatusCode.UnAuth) {
+        showErrorConnectionToast();
+        return;
+      }
+      noop();
+    });
 };
 
 export const logout = (): ThunkCreatorResult => (dispatch, _store, api) => {
@@ -64,5 +96,6 @@ export const logout = (): ThunkCreatorResult => (dispatch, _store, api) => {
     .then(() => {
       setToken('');
       dispatch(setAuth(AuthStatus.NotAuth));
-    });
+    })
+    .catch(() => showErrorConnectionToast());
 };

@@ -20,3 +20,5 @@ export const getEventsOnMonth = (events: IEvent[], date: Moment) => {
     return event.date.slice(0, SIGN_TO_MONTH) === date.format(DATE_MONTH_FORMAT).slice(0,SIGN_TO_MONTH);
   });
 };
+
+export const noop = () => {};
