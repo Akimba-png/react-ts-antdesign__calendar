@@ -9,7 +9,8 @@ import { ApiRoute, AuthStatus } from '../const';
 const loadEvents = (username: string): ThunkCreatorResult => (dispatch, _state, api) => {
   api
     .get<IEvent[]>(ApiRoute.Events + username)
-    .then((response) => dispatch(setEvents(response.data)));
+    .then((response) => dispatch(setEvents(response.data)))
+    .then(() => dispatch(setAuth(AuthStatus.Auth)));
 };
 
 export const postEvent = (event: IEvent, onSuccess: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
@@ -38,8 +39,7 @@ export const login = (userData: IUser): ThunkCreatorResult => (dispatch, _state,
       dispatch(setUser(response.data.username));
       return response.data.username;
     })
-    .then((userName) => dispatch(loadEvents(userName)))
-    .then(() => dispatch(setAuth(AuthStatus.Auth)));
+    .then((userName) => dispatch(loadEvents(userName)));
 };
 
 export const checkAuth = (): ThunkCreatorResult => (dispatch, _state, api) => {
@@ -50,7 +50,6 @@ export const checkAuth = (): ThunkCreatorResult => (dispatch, _state, api) => {
       return response.data.username;
     })
     .then((data) => dispatch(loadEvents(data)))
-    .then(() => dispatch(setAuth(AuthStatus.Auth)))
     .catch(() => {});
 };
 

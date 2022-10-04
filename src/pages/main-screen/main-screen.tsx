@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Calendar, Layout, Typography } from 'antd';
+import { Button, Layout, Typography } from 'antd';
 import { AppDispatch } from '../../store/store';
 import { loadGuests } from '../../store/assync-actions';
 import MainScreenModal from '../../components/main-screen-modal/main-screen-modal';
+import AppCalendar from '../../components/app-calendar/app-calendar';
 
 const { Title } = Typography;
 
@@ -21,9 +22,9 @@ function MainScreen(): JSX.Element {
   };
 
   return (
-    <Layout className="container">
+    <Layout className="main-container">
       <Title level={2}>Your events</Title>
-      <Calendar fullscreen={true} />
+      <AppCalendar />
       <Button type="primary" onClick={handleButtonClick} loading={isGuestsLoading} >
         Add event
       </Button>

@@ -76,3 +76,22 @@
 .modal-select {
   width: 120px;
 }
+
+.ant-layout.main-container {
+  padding: 0 150px;
+  min-height: calc(100vh - 45px);
+}
+
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event-list__user {
+  font-weight: bold;
+}
+
+.events-list__content--by-month {
+  text-align: center;
+}

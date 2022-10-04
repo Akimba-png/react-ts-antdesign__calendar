@@ -1,5 +1,6 @@
 export const AUTH_TOKEN = 'Calendar-token';
 export const EVENTS_SLOT = 'events';
+export const DATE_MONTH_FORMAT = 'L';
 
 export enum AppRoute {
   Main = '/',
