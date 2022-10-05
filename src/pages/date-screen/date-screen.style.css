@@ -1,0 +1,69 @@
+.date-screen.ant-layout {
+  padding-top: 30px;
+}
+
+.date-screen__title.ant-typography {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.date-screen__carousel-containter {
+  padding: 5px;
+  width: 800px;
+}
+
+.date-screen .ant-carousel .slick-dots li.slick-active button,
+.date-screen .ant-carousel .slick-dots li button {
+  background-color: #1890ff;
+}
+
+.date-screen .ant-carousel .slick-next,
+.date-screen .ant-carousel .slick-prev {
+  z-index: 1;
+  width: 100px;
+  height: 40px;
+  opacity: 1;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  color:#1890ff;
+  border: 2px solid #1890ff; 
+  border-radius: 6px;
+}
+
+.date-screen .ant-carousel .slick-next {
+  right: -120px;
+}
+
+.date-screen .ant-carousel .slick-prev {
+  right: 0;
+  left: -120px;
+}
+
+.date-screen .ant-carousel .slick-next:hover,
+.date-screen .ant-carousel .slick-prev:hover
+ {
+  opacity: 0.5;
+  color: #1890ff;
+}
+
+.date-screen .ant-carousel .slick-next:focus,
+.date-screen .ant-carousel .slick-prev:focus {
+  opacity: 1;
+  color: #1890ff;
+}
+
+.date-screen .ant-carousel .slick-next:focus:hover,
+.date-screen .ant-carousel .slick-prev:focus:hover {
+  opacity: 0.5;
+  color: #1890ff;
+}
+
+
+.date-screen__carousel {
+  margin-bottom:25px;
+}
+
+.date-screen__calendar-link {
+  margin-left: 45px;
+}

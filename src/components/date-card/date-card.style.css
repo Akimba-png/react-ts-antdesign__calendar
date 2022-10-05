@@ -1,0 +1,12 @@
+.date-card.ant-card {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 600px;
+}
+
+.date-card__footer {
+  position: absolute;
+  bottom: 60px;
+  width: 700px;
+}
