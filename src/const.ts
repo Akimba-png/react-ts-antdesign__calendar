@@ -5,7 +5,7 @@ export const DATE_MONTH_FORMAT = 'L';
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',
-  Date = '/date',
+  Date = '/date/:id',
   Unknown = '*',
 }
 
