@@ -3,8 +3,8 @@ import { Calendar } from 'antd';
 import { Moment } from 'moment';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import { showDateToast } from '../toast/toast';
-import { getEventsOnDate, getEventsOnMonth } from '../../utils/common';
-import { DATE_MONTH_FORMAT } from '../../const';
+import DateConverter from '../../utils/date-converter';
+import { checkEventOnDate, getEventsOnDate, getEventsOnMonth } from '../../utils/common';
 
 
 function AppCalendar(): JSX.Element {
@@ -13,11 +13,12 @@ function AppCalendar(): JSX.Element {
 
 
   const handleChangeDate = (date: Moment) => {
-    if (!events.some((event) => event.date === date.format(DATE_MONTH_FORMAT))) {
+    const isEventOnDate = checkEventOnDate(events, date);
+    if (!isEventOnDate) {
       showDateToast();
       return;
     }
-    navigate(`/date/${date.format(DATE_MONTH_FORMAT).replaceAll('\/', '')}`);
+    navigate(`/date/${DateConverter.dayToYear(date)}`);
   };
 
   const dateCellRender = (date: Moment) => {

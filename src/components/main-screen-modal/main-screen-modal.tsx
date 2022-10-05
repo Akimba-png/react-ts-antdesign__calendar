@@ -7,7 +7,7 @@ import { useAppSelector } from '../../hooks/use-typed-selector';
 import { postEvent } from '../../store/assync-actions';
 import { validate } from '../../utils/common';
 import { AppDispatch } from '../../store/store';
-import { DATE_MONTH_FORMAT } from '../../const';
+import DateConverter from '../../utils/date-converter';
 
 
 interface MainScreenModalProps {
@@ -38,7 +38,7 @@ function MainScreenModal({
   };
   
   const handlePickerChange: DatePickerProps['onChange'] = (date) => {
-    setEvent((event) => ({...event, date: date!.format(DATE_MONTH_FORMAT)}));
+    setEvent((event) => ({...event, date: DateConverter.yearToDate(date!)}));
   };
   
   const handleFormSubmit = () => {
