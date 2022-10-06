@@ -31,3 +31,8 @@ export enum AuthStatus {
   NotAuth = 'not-auth',
   Unknown = 'unknown',
 }
+
+export enum BadgeStatus {
+  Important = 'error',
+  Default = 'default',
+}

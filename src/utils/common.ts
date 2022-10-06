@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 import { IEvent } from '../types';
 import DateConverter from './date-converter';
-import { EVENTS_SLOT } from '../const';
+import { BadgeStatus, EVENTS_SLOT } from '../const';
 
 const SIGN_TO_MONTH = 6;
 
@@ -29,4 +29,7 @@ export const generateEventId = () => {
   return JSON.parse(localStorage.getItem(EVENTS_SLOT) || '[]').length++;
 };
 
+export const getCalendarBadgeStatus = (event: IEvent) => {
+  return event.isImportant ? BadgeStatus.Important: BadgeStatus.Default;
+}
 export const noop = () => {};

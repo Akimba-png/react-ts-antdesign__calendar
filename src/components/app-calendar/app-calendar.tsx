@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { Calendar } from 'antd';
+import { Badge, Calendar } from 'antd';
 import { Moment } from 'moment';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import { showDateToast } from '../toast/toast';
 import DateConverter from '../../utils/date-converter';
-import { checkEventOnDate, getEventsOnDate, getEventsOnMonth } from '../../utils/common';
+import { checkEventOnDate, getCalendarBadgeStatus, getEventsOnDate, getEventsOnMonth } from '../../utils/common';
 
 
 function AppCalendar(): JSX.Element {
@@ -29,8 +29,19 @@ function AppCalendar(): JSX.Element {
           const keyIndex = event.description + i.toString();
           return (
             <li key={keyIndex}>
-                <span className="event-list__user">{event.guest}</span>
-                {` - ${event.description}`}
+              <Badge status={getCalendarBadgeStatus(event)} text={
+                <>
+                  <span className="event-list__user">{event.guest} - </span>
+                  <span className={
+                    event.isComplete ? 
+                    'events-list__description events-list__description--complete'
+                    : ''
+                  }>
+                    {event.description}
+                  </span>
+                </>
+              }>
+              </Badge>
             </li>
           );
         })}
@@ -41,7 +52,7 @@ function AppCalendar(): JSX.Element {
   const monthCellRender = (date: Moment) => {
     const eventsOnMonth = getEventsOnMonth(events, date);
     return (
-      <div className="events-list__content--by-month">
+      <div className="events-list__content events-list__content--by-month">
         {eventsOnMonth.length || ''}
       </div>
     );
