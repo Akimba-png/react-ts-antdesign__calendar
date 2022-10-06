@@ -19,8 +19,11 @@ export interface ILoginResponse {
 }
 
 export interface IEvent {
+  id: number,
   author: UserName,
   guest: UserName,
   date: string,
   description: string,
+  isImportant: boolean,
+  isComplete: boolean,
 }

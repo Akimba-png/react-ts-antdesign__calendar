@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IEvent } from '../types';
 import DateConverter from './date-converter';
+import { EVENTS_SLOT } from '../const';
 
 const SIGN_TO_MONTH = 6;
 
@@ -24,5 +25,8 @@ export const checkEventOnDate = (events: IEvent[], date: Moment) => {
   return events.some((event) => event.date === DateConverter.yearToDate(date));
 };
 
+export const generateEventId = () => {
+  return JSON.parse(localStorage.getItem(EVENTS_SLOT) || '[]').length++;
+};
 
 export const noop = () => {};
