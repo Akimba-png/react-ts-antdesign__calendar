@@ -1,6 +1,7 @@
-import { Button, Card, Divider, Row, Typography } from 'antd';
+import { Card, Divider, Row, Typography } from 'antd';
 import { IEvent } from './../../types';
 import DateConverter from '../../utils/date-converter';
+import CompleteButton from '../complete-button/complete-button';
 import './date-card.style.css';
 
 const { Title, Text, Paragraph } = Typography;
@@ -12,8 +13,9 @@ type DateCardProps = {
 };
 
 function DateCard({event, eventsCount, eventIndex}: DateCardProps): JSX.Element {
-  const {date, author, guest, description, isComplete, isImportant} = event;
+  const {id, date, author, guest, description, isComplete, isImportant} = event;
   const currentDate = DateConverter.dayToYear(date);
+
   return (
     <Card className="date-card">
       <Row justify="space-between" align="middle">
@@ -44,7 +46,7 @@ function DateCard({event, eventsCount, eventIndex}: DateCardProps): JSX.Element 
       <Paragraph>{description}</Paragraph>
       <Row className="date-card__footer">
         <Divider />
-        <Button type="primary">Ометить как выполненное</Button>
+        <CompleteButton id={id} completeStatus={isComplete} />
       </Row>
     </Card>
   );

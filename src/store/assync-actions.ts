@@ -8,6 +8,7 @@ import { showErrorConnectionToast, showUnregisteredToast } from '../components/t
 import { noop } from '../utils/common';
 import { ApiRoute, AuthStatus, StatusCode } from '../const';
 
+const NEXT_ELEMENT_ID = 1;
 
 const loadEvents = (username: string, onFinish?: () => void): ThunkCreatorResult => (dispatch, _state, api) => {
   api
@@ -32,6 +33,22 @@ export const postEvent = (event: IEvent, onFinish: () => void): ThunkCreatorResu
     .post<IEvent[]>(ApiRoute.Events, event)
     .then((response) => {
       dispatch(setEvents(response.data));
+      onFinish();
+    })
+    .catch(() => {
+      onFinish();
+      showErrorConnectionToast();
+    });
+};
+
+export const toggleCompleteStatus = (id: number, onFinish: () => void): ThunkCreatorResult => (dispatch, state, api) => {
+  api
+    .patch<IEvent>(ApiRoute.Events, id)
+    .then((response) => {
+      const events = state().eventReducer.events;
+      const updatedEventIndex = events.findIndex((event) => event.id === id);
+      const updatedEvents = [...events.slice(0, updatedEventIndex), response.data, ...events.slice(updatedEventIndex + NEXT_ELEMENT_ID)];
+      dispatch(setEvents(updatedEvents));
       onFinish();
     })
     .catch(() => {

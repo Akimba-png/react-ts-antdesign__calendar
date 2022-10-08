@@ -8,6 +8,7 @@ export interface IDatabase {
   getUsers(): UserName[],
   getEvents(requst: AxiosRequestConfig): IEvent[],
   setEvent(request: AxiosRequestConfig): IEvent[],
+  updateCompleteStatus(request: AxiosRequestConfig) : IEvent,
 }
 
 
@@ -35,6 +36,15 @@ export class Database implements IDatabase {
     currentEvents.push(event);
     this.updateEvents(currentEvents);
     return this.filterEvents(currentEvents, user);
+  }
+
+  updateCompleteStatus(request: AxiosRequestConfig) {
+    const id = request.data;
+    const currentEvents: IEvent[] = this.parseEvents();
+    const eventToUpdate = currentEvents.find((event) => event.id === id)!;
+    eventToUpdate.isComplete = !eventToUpdate.isComplete;
+    this.updateEvents(currentEvents);
+    return eventToUpdate;
   }
 
   private parseEvents(): IEvent[] {
