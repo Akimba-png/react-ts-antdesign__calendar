@@ -1,13 +1,14 @@
 import { useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, DatePicker, DatePickerProps, Form, Modal, Input, Select } from 'antd';
+import { Button, DatePicker, DatePickerProps, Form, Modal, Input, Select, Checkbox, Divider } from 'antd';
 import Item from 'antd/lib/form/FormItem';
 import { IEvent } from '../../types';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import { postEvent } from '../../store/assync-actions';
-import { validate } from '../../utils/common';
+import { generateEventId, validate } from '../../utils/common';
 import { AppDispatch } from '../../store/store';
-import { DATE_MONTH_FORMAT } from '../../const';
+import DateConverter from '../../utils/date-converter';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 
 
 interface MainScreenModalProps {
@@ -16,14 +17,18 @@ interface MainScreenModalProps {
 
 const { Option } = Select;
 
-
 function MainScreenModal({
   onModalClose,
 }: MainScreenModalProps): JSX.Element {
 
-  const [ event, setEvent ] = useState<IEvent>({} as IEvent);
-  const [ isLoading, setLoading ] = useState<boolean>(false);
+  const [ event, setEvent ] = useState<IEvent>({
+    isImportant: false,
+    isComplete: false,
+    id: generateEventId(),
+  } as IEvent);
 
+  const [ isLoading, setLoading ] = useState<boolean>(false);
+  
   const guests = useAppSelector(store => store.eventReducer.guests);
   const author = useAppSelector(store => store.userReducer.userName);
   const dispatch = useDispatch() as AppDispatch;
@@ -38,7 +43,11 @@ function MainScreenModal({
   };
   
   const handlePickerChange: DatePickerProps['onChange'] = (date) => {
-    setEvent((event) => ({...event, date: date!.format(DATE_MONTH_FORMAT)}));
+    setEvent((event) => ({...event, date: DateConverter.yearToDate(date!)}));
+  };
+
+  const handleImportanceChange = (evt: CheckboxChangeEvent) => {
+    setEvent((event) => ({...event, isImportant: !event.isImportant}));
   };
   
   const handleFormSubmit = () => {
@@ -106,6 +115,16 @@ function MainScreenModal({
           rules={[validate.required('Pick date')]}>
           <DatePicker onChange={handlePickerChange} />
         </Item>
+        <Divider />
+        <Item name="importance">
+          <Checkbox
+            onChange={handleImportanceChange}
+            checked={event.isImportant}
+          >
+            High importance
+          </Checkbox>
+        </Item>
+        <Divider />
         <Button 
           type="primary"
           htmlType="submit"

@@ -5,6 +5,7 @@ export const DATE_MONTH_FORMAT = 'L';
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',
+  Date = '/date/:id',
   Unknown = '*',
 }
 
@@ -29,4 +30,9 @@ export enum AuthStatus {
   Auth = 'auth',
   NotAuth = 'not-auth',
   Unknown = 'unknown',
+}
+
+export enum BadgeStatus {
+  Important = 'error',
+  Default = 'default',
 }

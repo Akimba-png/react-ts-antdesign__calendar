@@ -54,7 +54,7 @@
 .user-info {
   margin-left: auto;
   padding-right: 15px;
-  color: #fff; 
+  color: #fff;
 }
 
 .loading-screen {
@@ -79,7 +79,12 @@
 
 .ant-layout.main-container {
   padding: 0 150px;
-  min-height: calc(100vh - 45px);
+  min-height: calc(100vh - 65px);
+}
+
+.main-container__title.ant-typography {
+  margin: 0;
+  padding-bottom: 5px;
 }
 
 .events-list {
@@ -92,6 +97,16 @@
   font-weight: bold;
 }
 
+.events-list__description--complete {
+  text-decoration: line-through;
+}
+
 .events-list__content--by-month {
   text-align: center;
 }
+
+.ant-layout.section-container {
+  padding: 0 150px;
+  min-height: calc(100vh - 64px);
+}
+
