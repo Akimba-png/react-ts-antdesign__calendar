@@ -28,7 +28,8 @@ function AppCalendar(): JSX.Element {
         {eventsOnDate.map((event, i) => {
           const keyIndex = event.description + i.toString();
           return (
-            <li key={keyIndex}>
+            <li 
+              key={keyIndex}>
               <Badge status={getCalendarBadgeStatus(event)} text={
                 <>
                   <span className="event-list__user">{event.guest} - </span>
@@ -61,7 +62,7 @@ function AppCalendar(): JSX.Element {
 
   return (
     <Calendar
-      onChange={handleChangeDate}
+      onSelect={handleChangeDate}
       dateCellRender={dateCellRender}
       monthCellRender={monthCellRender}
       fullscreen={true}
