@@ -41,7 +41,10 @@ function DateScreen(): JSX.Element {
               })
             }
           </Carousel>
-          <Link className="date-screen__calendar-link" to={AppRoute.Main}>К календарю</Link>
+          <Row className="date-screen__link-block" justify='space-between'>
+            <Link to={AppRoute.Main}>К календарю</Link>
+            <Link to={AppRoute.Stat}>Все мероприятия</Link>
+          </Row>
         </Col>
       </Row>
     </Layout>

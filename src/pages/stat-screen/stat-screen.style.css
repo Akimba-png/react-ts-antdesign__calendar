@@ -1,0 +1,8 @@
+.stat-screen.ant-layout {
+  padding-top: 30px;
+}
+
+.stat-screen__title.ant-typography {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

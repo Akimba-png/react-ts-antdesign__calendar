@@ -6,6 +6,7 @@ export enum AppRoute {
   Main = '/',
   SignIn = '/login',
   Date = '/date/:id',
+  Stat = '/stat/',
   Unknown = '*',
 }
 
