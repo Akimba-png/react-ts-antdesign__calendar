@@ -23,7 +23,7 @@ function MainScreen(): JSX.Element {
 
   return (
     <Layout className="main-container">
-      <Title level={2}>Your events</Title>
+      <Title className="main-container__title" level={2}>Your events</Title>
       <AppCalendar />
       <Button type="primary" onClick={handleButtonClick} loading={isGuestsLoading} >
         Add event
