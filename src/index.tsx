@@ -5,8 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/app/App';
 import { checkAuth } from './store/assync-actions';
 import { store } from './store/store';
+import { appInit } from './utils/app-init';
 
-
+appInit();
 store.dispatch(checkAuth());
 
 const root = ReactDOM.createRoot(

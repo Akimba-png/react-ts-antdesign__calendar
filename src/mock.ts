@@ -1,4 +1,4 @@
-import { IUserWithToken } from './types';
+import { IEvent, IUserWithToken } from './types';
 
 export const mockUsers: IUserWithToken[] = [
   {
@@ -15,5 +15,119 @@ export const mockUsers: IUserWithToken[] = [
     username: 'boz',
     password: '123',
     token: 'boz123',
+  },
+];
+
+export const mockEvents: IEvent[] = [
+  {
+    id: 1,
+    date: '03',
+    author: 'foo',
+    guest: 'bar',
+    description: 'Start doing things',
+    isComplete: true,
+    isImportant: true,
+  },
+  {
+    id: 2,
+    date: '05',
+    author: 'foo',
+    guest: 'foo',
+    description: 'Check complete status',
+    isComplete: true,
+    isImportant: true,
+  },
+  {
+    id: 3,
+    date: '07',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Fix bugs',
+    isComplete: false,
+    isImportant: true,
+  },
+  {
+    id: 4,
+    date: '11',
+    author: 'foo',
+    guest: 'bar',
+    description: 'Make calls',
+    isComplete: false,
+    isImportant: false,
+  },
+  {
+    id: 5,
+    date: '11',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Answer calls',
+    isComplete: false,
+    isImportant: true,
+  },
+  {
+    id: 6,
+    date: '14',
+    author: 'foo',
+    guest: 'bar',
+    description: 'fix #274',
+    isComplete: true,
+    isImportant: true,
+  },
+
+  {
+    id: 7,
+    date: '14',
+    author: 'foo',
+    guest: 'bar',
+    description: 'fix #378',
+    isComplete: false,
+    isImportant: false,
+  },
+  {
+    id: 8,
+    date: '24',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Refactor #3714',
+    isComplete: false,
+    isImportant: false,
+  },
+
+  {
+    id: 9,
+    date: '24',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Refactor #3715',
+    isComplete: false,
+    isImportant: true,
+  },
+  {
+    id: 10,
+    date: '24',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Refactor #3716',
+    isComplete: true,
+    isImportant: true,
+  },
+
+  {
+    id: 11,
+    date: '27',
+    author: 'foo',
+    guest: 'boz',
+    description: 'Finish doing things',
+    isComplete: false,
+    isImportant: true,
+  },
+  {
+    id: 12,
+    date: '28',
+    author: 'foo',
+    guest: 'bar',
+    description: 'Meeting',
+    isComplete: false,
+    isImportant: true,
   },
 ];

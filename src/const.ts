@@ -1,6 +1,7 @@
 export const AUTH_TOKEN = 'Calendar-token';
 export const EVENTS_SLOT = 'events';
-export const DATE_MONTH_FORMAT = 'L';
+export const SIGN_TO_MONTH = 6;
+export const INDEX_INCREMENT = 1;
 
 export enum AppRoute {
   Main = '/',
@@ -36,4 +37,10 @@ export enum AuthStatus {
 export enum BadgeStatus {
   Important = 'error',
   Default = 'default',
+}
+
+export enum DateFormat {
+  DayMonthYear = 'DDMMYYYY',
+  YearMonthDay = 'YYYYMMDD',
+  YearMonth = 'YYYYMM',
 }

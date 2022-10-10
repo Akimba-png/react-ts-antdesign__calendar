@@ -1,13 +1,12 @@
 import { Moment } from 'moment';
+import { DateFormat } from '../const';
 
-const DAY_TO_YEAR_FORMAT = 'DDMMYYYY';
-const YEAR_TO_DAY_FORMAT = 'YYYYMMDD';
 
 class DateConverter {
 
   static dayToYear(date: Moment | string): string {
     if (this.isMoment(date)) {
-      return date.format(DAY_TO_YEAR_FORMAT);
+      return date.format(DateFormat.DayMonthYear);
     }
     return date.replace(/(\d{4})(\d{2})(\d{2})/, (_m, p1, p2, p3) => {
       return `${p3}${p2}${p1}`;
@@ -16,7 +15,7 @@ class DateConverter {
 
   static yearToDate(date: Moment | string): string {
     if (this.isMoment(date)) {
-      return date.format(YEAR_TO_DAY_FORMAT);
+      return date.format(DateFormat.YearMonthDay);
     }
     return date.replace(/(\d{2})(\d{2})(\d{4})/, (_m, p1, p2, p3) => {
       return `${p3}${p2}${p1}`
