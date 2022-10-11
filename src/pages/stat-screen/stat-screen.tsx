@@ -1,5 +1,5 @@
-import { Layout, Typography } from 'antd';
 import { Link } from 'react-router-dom';
+import { Layout, Typography } from 'antd';
 import StatTable from '../../components/stat-table/stat-table';
 import { AppRoute } from '../../const';
 import './stat-screen.style.css';
