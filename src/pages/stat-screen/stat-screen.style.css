@@ -4,7 +4,7 @@
 
 .stat-screen__title.ant-typography {
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .stat-screen__container {
@@ -15,4 +15,8 @@
   position: absolute;
   bottom: 20px;
   left: 30px;
+}
+
+.stat-screen__slider.ant-slider {
+  margin-bottom: 25px;
 }

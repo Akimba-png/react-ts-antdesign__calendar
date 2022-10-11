@@ -8,14 +8,17 @@ import { getUsersType } from './stat-table.utils';
 import DateConverter from '../../utils/date-converter';
 import { ButtonStyle } from '../../const';
 
-
 enum TagText {
   Complete = 'ВЫПОЛНЕНО',
   Important = 'ВАЖНО',
 }
 
+type StatTableProps = {
+  itemsCount: number,
+}
 
-function StatTable(): JSX.Element {
+
+function StatTable({itemsCount}: StatTableProps): JSX.Element {
   const events: IEvent[] = useAppSelector(state => state.eventReducer.events);
   const userType = getUsersType(events);
   const dataSource = events.map((event) => ({...event, key: event.id}));
@@ -134,6 +137,7 @@ function StatTable(): JSX.Element {
       <Table
         dataSource={dataSource}
         columns={columns}
+        pagination={{pageSize: itemsCount}}
       />
   );
 }
