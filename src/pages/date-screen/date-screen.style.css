@@ -64,6 +64,6 @@
   margin-bottom:25px;
 }
 
-.date-screen__calendar-link {
-  margin-left: 45px;
+.date-screen__link-block {
+  padding: 0 40px;
 }

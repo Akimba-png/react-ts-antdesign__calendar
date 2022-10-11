@@ -87,6 +87,10 @@
   padding-bottom: 5px;
 }
 
+.main-container__link {
+  margin-right: 185px;
+}
+
 .events-list {
   list-style: none;
   margin: 0;

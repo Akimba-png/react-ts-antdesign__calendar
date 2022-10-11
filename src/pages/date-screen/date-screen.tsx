@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks/use-typed-selector';
 import DateCard from '../../components/date-card/date-card';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import DateConverter from '../../utils/date-converter';
-import { AppRoute } from '../../const';
+import { AppRoute, INDEX_INCREMENT } from '../../const';
 import './date-screen.style.css';
 
 const { Title } = Typography;
@@ -34,14 +34,17 @@ function DateScreen(): JSX.Element {
                   <DateCard 
                     event={event}
                     eventsCount={eventsCount}
-                    eventIndex={i + 1}
+                    eventIndex={i + INDEX_INCREMENT}
                     key={keyIndex}
                   />
                 );
               })
             }
           </Carousel>
-          <Link className="date-screen__calendar-link" to={AppRoute.Main}>К календарю</Link>
+          <Row className="date-screen__link-block" justify='space-between'>
+            <Link to={AppRoute.Main}>К календарю</Link>
+            <Link to={AppRoute.Stat}>Все мероприятия</Link>
+          </Row>
         </Col>
       </Row>
     </Layout>

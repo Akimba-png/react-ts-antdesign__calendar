@@ -1,9 +1,8 @@
 import { Moment } from 'moment';
 import { IEvent } from '../types';
 import DateConverter from './date-converter';
-import { BadgeStatus, EVENTS_SLOT } from '../const';
+import { BadgeStatus, EVENTS_SLOT, INDEX_INCREMENT, SIGN_TO_MONTH } from '../const';
 
-const SIGN_TO_MONTH = 6;
 
 export const validate = {
   required(text: string) {
@@ -26,7 +25,7 @@ export const checkEventOnDate = (events: IEvent[], date: Moment) => {
 };
 
 export const generateEventId = () => {
-  return JSON.parse(localStorage.getItem(EVENTS_SLOT) || '[]').length++;
+  return JSON.parse(localStorage.getItem(EVENTS_SLOT) || '[]').length + INDEX_INCREMENT;
 };
 
 export const getCalendarBadgeStatus = (event: IEvent) => {
