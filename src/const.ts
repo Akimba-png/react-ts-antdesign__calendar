@@ -44,3 +44,8 @@ export enum DateFormat {
   YearMonthDay = 'YYYYMMDD',
   YearMonth = 'YYYYMM',
 }
+
+export enum ButtonStyle {
+  Primary = 'primary',
+  Link = 'link',
+}

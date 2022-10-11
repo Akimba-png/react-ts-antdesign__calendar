@@ -6,3 +6,13 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.stat-screen__container {
+  position: relative;
+}
+
+.stat-screen__link {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+}

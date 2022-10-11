@@ -3,15 +3,17 @@ import { useDispatch } from 'react-redux';
 import { Button, Popconfirm } from 'antd';
 import { AppDispatch } from '../../store/store';
 import { toggleCompleteStatus } from './../../store/assync-actions';
+import { ButtonStyle } from './../../const';
 
 type CompleteButtonProps = {
   completeStatus: boolean;
   id: number;
+  style?: ButtonStyle,
 };
 
 
 function CompleteButton(props: CompleteButtonProps): JSX.Element {
-  const { id, completeStatus } = props;
+  const { id, completeStatus, style = ButtonStyle.Primary } = props;
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const [ isPopupOpen, setPopupOpen ] = useState<boolean>(false);
   const dispatch = useDispatch() as AppDispatch;
@@ -34,12 +36,12 @@ function CompleteButton(props: CompleteButtonProps): JSX.Element {
       okButtonProps={{ loading: isLoading }}
       onCancel={() => setPopupOpen(false)}
     >
-      <Button onClick={() => setPopupOpen(true)} type="primary">
+      <Button onClick={() => setPopupOpen(true)} type={style}>
         Отменить выполнение
       </Button>
     </Popconfirm>
   ) : (
-    <Button onClick={handleCompleteChange} type="primary" loading={isLoading}>
+    <Button onClick={handleCompleteChange} type={style} loading={isLoading}>
       Ометить как выполненное
     </Button>
   );
