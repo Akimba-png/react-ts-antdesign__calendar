@@ -1,0 +1,16 @@
+.loading-screen {
+  height: calc(100vh - 64px);
+  justify-content: center;
+  padding: 0 150px;
+}
+
+.loading-screen__title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loading-screen__text {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}

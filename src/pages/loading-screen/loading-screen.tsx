@@ -1,4 +1,5 @@
 import { Layout, Typography, Spin } from 'antd';
+import './loading-screen.style.css';
 
 function LoadingScreen(): JSX.Element {
   return (
