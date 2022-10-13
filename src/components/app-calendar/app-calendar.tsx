@@ -5,6 +5,7 @@ import { useAppSelector } from '../../hooks/use-typed-selector';
 import { showDateToast } from '../toast/toast';
 import DateConverter from '../../utils/date-converter';
 import { checkEventOnDate, getCalendarBadgeStatus, getEventsOnDate, getEventsOnMonth } from '../../utils/common';
+import './app-calendar.style.css';
 
 
 function AppCalendar(): JSX.Element {
@@ -24,7 +25,7 @@ function AppCalendar(): JSX.Element {
   const dateCellRender = (date: Moment) => {
     const eventsOnDate = getEventsOnDate(events, date);
     return (
-      <ul className="events events-list">
+      <ul className="events-list">
         {eventsOnDate.map((event, i) => {
           const keyIndex = event.description + i.toString();
           return (

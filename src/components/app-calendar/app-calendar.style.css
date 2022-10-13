@@ -1,0 +1,17 @@
+.events-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.event-list__user {
+  font-weight: bold;
+}
+
+.events-list__description--complete {
+  text-decoration: line-through;
+}
+
+.events-list__content--by-month {
+  text-align: center;
+}
