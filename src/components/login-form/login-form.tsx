@@ -7,6 +7,7 @@ import { AppDispatch } from '../../store/store';
 import { login } from '../../store/assync-actions';
 import { validate } from '../../utils/common';
 import { ValidateMessage } from '../../const';
+import './login-form.style.css';
 
 function LoginForm(): JSX.Element {
   const [user, setUser] = useState<string>('');
@@ -54,7 +55,7 @@ function LoginForm(): JSX.Element {
           />
         </Item>
 
-        <Item className="form-login__button_wrapper">
+        <Item className="form-login__button-wrapper">
           <Button
             type="primary"
             htmlType="submit"

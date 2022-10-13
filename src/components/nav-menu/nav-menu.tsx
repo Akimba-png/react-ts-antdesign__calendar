@@ -5,6 +5,7 @@ import { AppDispatch } from '../../store/store';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import { logout } from '../../store/assync-actions';
 import { AuthStatus, AppRoute } from '../../const';
+import './nav-menu.style.css';
 
 
 const notAuthItems: MenuProps['items'] = [

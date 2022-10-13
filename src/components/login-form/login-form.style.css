@@ -1,0 +1,13 @@
+.form-login.ant-form {
+  padding: 30px;
+  width: 500px;
+}
+
+.form-login__button-wrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.form-login__button {
+  width: 150px;
+}

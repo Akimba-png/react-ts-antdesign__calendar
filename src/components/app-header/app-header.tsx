@@ -4,6 +4,7 @@ import { Header } from 'antd/lib/layout/layout';
 import { useAppSelector } from '../../hooks/use-typed-selector';
 import NavMenu from '../nav-menu/nav-menu';
 import { AppRoute, AuthStatus } from '../../const';
+import './app-header.style.css';
 
 const { Title } = Typography;
 

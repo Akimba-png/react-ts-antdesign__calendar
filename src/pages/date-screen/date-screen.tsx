@@ -20,7 +20,7 @@ function DateScreen(): JSX.Element {
   }
 
   return (
-    <Layout className="date-screen section-container">
+    <Layout className="date-screen">
       <Title className="date-screen__title" level={2}>
         События на день
       </Title>

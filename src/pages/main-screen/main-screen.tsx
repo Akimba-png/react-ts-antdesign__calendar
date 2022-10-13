@@ -7,6 +7,7 @@ import { loadGuests } from '../../store/assync-actions';
 import MainScreenModal from '../../components/main-screen-modal/main-screen-modal';
 import AppCalendar from '../../components/app-calendar/app-calendar';
 import { AppRoute } from '../../const';
+import './main-screen.style.css';
 
 const { Title } = Typography;
 

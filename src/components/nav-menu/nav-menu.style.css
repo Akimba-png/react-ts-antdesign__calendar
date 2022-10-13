@@ -1,0 +1,11 @@
+.user-info {
+  margin-left: auto;
+  padding-right: 15px;
+  color: #fff;
+}
+
+.header-menu {
+  min-width: 300px;
+  display: flex;
+  justify-content: end;
+}

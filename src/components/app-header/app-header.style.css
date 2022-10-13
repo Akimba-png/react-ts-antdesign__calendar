@@ -1,0 +1,10 @@
+.header-container {
+  padding: 0 100px;
+}
+
+.header-title.ant-typography {
+  margin: 0;
+  padding-top: 8px;
+  font-size: 32px;
+  color: #fff;
+}

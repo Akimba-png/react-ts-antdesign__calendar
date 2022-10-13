@@ -1,5 +1,7 @@
 .stat-screen.ant-layout {
+  padding: 0 150px;
   padding-top: 30px;
+  min-height: calc(100vh - 64px);
 }
 
 .stat-screen__title.ant-typography {
