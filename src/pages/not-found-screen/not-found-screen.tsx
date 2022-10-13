@@ -1,6 +1,9 @@
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { Layout, Row } from 'antd';
+import { Layout, Typography } from 'antd';
 import { AppRoute } from '../../const';
+import './notfound-screen.style.css';
+
+const { Title } = Typography;
 
 function NotFoundScreen(): JSX.Element {
 
@@ -11,9 +14,11 @@ function NotFoundScreen(): JSX.Element {
   }
   
   return (
-    <Layout className="container">
-      <h1>Page not Found</h1>
-      <Link to={AppRoute.Main}>link to main page</Link>
+    <Layout className="section-container">
+      <div className="notfound-screen">
+        <Title level={2}>Page not Found</Title>
+        <Link className="notfound-sreen__link" to={AppRoute.Main}>link to main page</Link>
+      </div>
     </Layout>
   );
 }
