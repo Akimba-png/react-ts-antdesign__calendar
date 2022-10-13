@@ -71,21 +71,3 @@
   margin-right: auto;
   margin-bottom: 30px;
 }
-
-.modal-select {
-  width: 120px;
-}
-
-.ant-layout.main-container {
-  padding: 0 150px;
-  min-height: calc(100vh - 65px);
-}
-
-.main-container__title.ant-typography {
-  margin: 0;
-  padding-bottom: 5px;
-}
-
-.main-container__link {
-  margin-right: 185px;
-}

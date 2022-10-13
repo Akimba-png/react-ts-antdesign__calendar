@@ -9,6 +9,7 @@ import { generateEventId, validate } from '../../utils/common';
 import { AppDispatch } from '../../store/store';
 import DateConverter from '../../utils/date-converter';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import './main-screen-modal.style.css';
 
 
 interface MainScreenModalProps {
