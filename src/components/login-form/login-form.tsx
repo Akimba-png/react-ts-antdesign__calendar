@@ -39,7 +39,7 @@ function LoginForm(): JSX.Element {
         name="username"
         rules={[validate.required(ValidateMessage.UserName)]}
       >
-        <Input value={user} onChange={(evt) => setUser(evt.target.value)} />
+        <Input value={user} onChange={(evt) => setUser(evt.target.value)} placeholder='foo'/>
       </Item>
 
       <Item
