@@ -18,7 +18,7 @@ function StatScreen(): JSX.Element {
     SliderConfig.DefaultValue
   );
   return (
-    <Layout className="stat-screen section-container">
+    <Layout className="stat-screen">
       <Title className="stat-screen__title" level={2}>
         Все мероприятия
       </Title>
