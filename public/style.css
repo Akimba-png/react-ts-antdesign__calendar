@@ -1,37 +1,9 @@
-.header-container {
-  padding: 0 100px;
-}
-
 .container {
   padding: 0 150px;
-}
-
-.header-title {
-  padding-top: 8px;
 }
 
 .header-menu {
   min-width: 300px;
   display: flex;
   justify-content: end;
-}
-
-.ant-typography.header-title {
-  margin: 0;
-  font-size: 32px;
-  color: #fff;
-}
-
-.text-color {
-  color: #fff;
-}
-
-.ant-layout.login-container {
-  padding-top: 110px;
-  min-height: calc(100vh - 64px);
-}
-
-.ant-typography.login-title {
-  margin: 0 auto;
-  margin-bottom: 80px;
 }
